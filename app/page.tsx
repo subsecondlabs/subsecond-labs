@@ -1,33 +1,6 @@
 import Image from "next/image";
-import {
-  ArrowRight,
-  Gauge,
-  Globe2,
-  Hammer,
-  Rocket,
-  Scan,
-  Search,
-  Server,
-} from "lucide-react";
+import { ArrowRight, Gauge, Hammer, Rocket, Scan } from "lucide-react";
 import { FadeIn } from "./components/FadeIn";
-
-const engineCards = [
-  {
-    title: "Next.js Architecture",
-    body: "Server rendering and static streaming for instant first paint.",
-    icon: Server,
-  },
-  {
-    title: "Vercel Edge Network",
-    body: "Global delivery that cuts latency where your leads live.",
-    icon: Globe2,
-  },
-  {
-    title: "Perfect SEO Scores",
-    body: "Technical foundations that rank higher and convert faster.",
-    icon: Search,
-  },
-];
 
 const specRows = [
   {
@@ -67,6 +40,33 @@ const protocolSteps = [
     title: "The Handover",
     body: "We deploy to Vercel's global edge network. You get a perfect 100 Score.",
     icon: Rocket,
+  },
+];
+
+const arsenalCards = [
+  {
+    title: "React Server Components",
+    body: "Zero client-side bloat. Logic runs on the server, not the user's phone.",
+  },
+  {
+    title: "Vercel Edge Network",
+    body: "Static assets replicated in 100+ global data centers. Instant delivery everywhere.",
+  },
+  {
+    title: "Next.js Image Optimization",
+    body: "Automatic webp conversion. Images are never the bottleneck.",
+  },
+  {
+    title: "Type-Safe Architecture",
+    body: "TypeScript ensures your site effectively never crashes.",
+  },
+  {
+    title: "Semantic SEO",
+    body: "Google reads our code perfectly. No messy div-soup.",
+  },
+  {
+    title: "CMS Integration",
+    body: "You edit text in Sanity.io. We handle the code. Best of both worlds.",
   },
 ];
 
@@ -304,6 +304,31 @@ export default function HomePage() {
         <section className="space-y-10">
           <FadeIn>
             <div className="space-y-4">
+              <h2 className="text-3xl font-semibold">
+                Built on the Modern Web&apos;s Bleeding Edge.
+              </h2>
+              <p className="max-w-2xl text-lg text-zinc-400">
+                We don&apos;t use plugins. We use raw engineering.
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {arsenalCards.map((card) => (
+              <div
+                key={card.title}
+                className="rounded-2xl border border-zinc-800 bg-zinc-900/30 p-6 transition hover:border-green-500/80"
+              >
+                <h3 className="text-lg font-semibold text-zinc-100">{card.title}</h3>
+                <p className="mt-3 text-sm text-zinc-400">{card.body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="space-y-10">
+          <FadeIn>
+            <div className="space-y-4">
               <h2 className="text-3xl font-semibold">Technical Briefing.</h2>
               <p className="max-w-2xl text-lg text-zinc-400">
                 Straight answers to the most common production questions before you commit.
@@ -321,46 +346,55 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="engine" className="space-y-10">
-          <FadeIn>
-            <div className="space-y-4">
-              <h2 className="text-3xl font-semibold">
-                Not WordPress. Pure Engineering.
-              </h2>
-              <p className="max-w-2xl text-lg text-zinc-400">
-                We build on a high-performance stack tuned for speed, precision,
-                and measurable revenue impact.
+        <section className="min-h-[50vh]">
+          <div className="glass-panel grid-border flex h-full flex-col justify-between gap-10 rounded-3xl bg-[radial-gradient(circle_at_top,_rgba(163,255,18,0.2),_rgba(5,5,5,0.95)_65%)] px-6 py-16 text-center sm:px-10 lg:px-16">
+            <div className="mx-auto max-w-3xl space-y-6">
+              <p className="text-xs uppercase tracking-[0.35em] text-zinc-400">
+                The Kill
               </p>
+              <h2 className="text-4xl font-semibold text-zinc-50 md:text-5xl">
+                Ready to weaponize your website?
+              </h2>
+              <p className="text-lg text-zinc-300">
+                You are losing leads every second your current site loads. Stop the bleeding.
+              </p>
+              <a
+                href="mailto:rakshit@subsecondlabs.com"
+                className="inline-flex items-center justify-center rounded-md border border-green-500/70 bg-green-500/15 px-6 py-3 text-base font-semibold text-green-500 transition hover:border-green-500 hover:bg-green-500/25 hover:text-green-500 terminal-glow"
+              >
+                Get Your Free Audit
+              </a>
             </div>
-          </FadeIn>
-
-          <div className="grid gap-6 md:grid-cols-3">
-            {engineCards.map((card, index) => {
-              const Icon = card.icon;
-              return (
-                <FadeIn key={card.title} delay={0.05 * index}>
-                  <div className="glass-panel grid-border h-full rounded-2xl p-6">
-                    <Icon className="h-6 w-6 text-green-500" />
-                    <h3 className="mt-4 text-xl font-semibold">{card.title}</h3>
-                    <p className="mt-3 text-sm text-zinc-400">{card.body}</p>
-                  </div>
-                </FadeIn>
-              );
-            })}
           </div>
         </section>
       </main>
 
-      <footer className="border-t border-zinc-800/80">
-        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-10 text-sm text-zinc-400 md:flex-row md:items-center md:justify-between">
-          <div>Lead Engineer: Rakshit Singh</div>
-          <div>SubSecond Labs.</div>
-          <a
-            href="mailto:rakshit@subsecondlabs.com"
-            className="text-green-500 hover:text-green-500"
-          >
-            rakshit@subsecondlabs.com
-          </a>
+      <footer className="border-t border-zinc-900 bg-[#050505] py-12 text-xs text-zinc-600">
+        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-6 md:flex-row md:items-center">
+          <div className="flex items-center gap-3">
+            <Image
+              src="/logo.svg"
+              alt="SubSecond Labs"
+              width={120}
+              height={28}
+              className="h-6 w-auto opacity-70 grayscale"
+            />
+            <span>© 2026 SubSecond Labs. All rights reserved.</span>
+          </div>
+          <div className="flex flex-wrap items-center gap-4">
+            <a href="/privacy" className="transition hover:text-zinc-400">
+              Privacy Policy
+            </a>
+            <a href="/terms" className="transition hover:text-zinc-400">
+              Terms of Service
+            </a>
+            <a
+              href="mailto:rakshit@subsecondlabs.com"
+              className="transition hover:text-zinc-400"
+            >
+              rakshit@subsecondlabs.com
+            </a>
+          </div>
         </div>
       </footer>
     </div>
