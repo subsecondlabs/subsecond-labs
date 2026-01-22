@@ -2,7 +2,6 @@ import Image from "next/image";
 import { ArrowRight, Gauge, Hammer, Rocket, Scan } from "lucide-react";
 import { FadeIn } from "./components/FadeIn";
 
-// RUTHLESS UPDATE: Aggressive Copy Installed
 const specRows = [
   {
     label: "Load Time",
@@ -12,17 +11,17 @@ const specRows = [
   {
     label: "Security",
     standard: "Vulnerable Plugins",
-    custom: "Bank-Grade Encryption", // Trustworthy & Strong
+    custom: "Bank-Grade Encryption",
   },
   {
     label: "SEO",
-    standard: "Google Penalized",     // Fear Trigger (Keep this!)
-    custom: "Google Preferred",       // Authority Trigger
+    standard: "Google Penalized",
+    custom: "Google Preferred",
   },
   {
     label: "Maintenance",
-    standard: "Monthly Fees & Updates", // The Pain Point
-    custom: "Zero Maintenance",         // The Solution (Keep this!)
+    standard: "Monthly Fees & Updates",
+    custom: "Zero Maintenance",
   },
 ];
 
@@ -102,7 +101,6 @@ export default function HomePage() {
               priority
             />
           </div>
-          {/* STEALTH UPDATE: Changed to hello@ */}
           <a
             href="mailto:hello@subsecondlabs.com"
             className="inline-flex items-center gap-2 rounded-md border border-green-500/70 bg-green-500/15 px-4 py-2 text-sm font-semibold text-green-500 transition hover:border-green-500 hover:bg-green-500/25 hover:text-green-500 terminal-glow"
@@ -164,27 +162,32 @@ export default function HomePage() {
               <p className="text-xs uppercase tracking-[0.35em] text-zinc-400">
                 Engineered On
               </p>
-              <div className="flex flex-wrap items-center gap-8 text-zinc-400">
+              <div className="flex flex-wrap items-center gap-12 opacity-70 transition duration-500 hover:opacity-100">
+                {/* NEXT.JS: The Anchor (Keep at h-7) */}
                 <Image
                   src="/nextjs.svg"
                   alt="Next.js"
-                  width={180}
-                  height={48}
-                  className="h-8 w-28 object-contain invert brightness-0 opacity-50"
+                  width={100}
+                  height={30}
+                  className="h-7 w-auto object-contain brightness-0 invert"
                 />
+
+                {/* VERCEL: Shrink to h-6 so the text aligns with Next.js */}
                 <Image
                   src="/vercel.svg"
                   alt="Vercel"
-                  width={160}
-                  height={48}
-                  className="h-8 w-28 object-contain invert brightness-0 opacity-50"
+                  width={90}
+                  height={25}
+                  className="h-6 w-auto object-contain brightness-0 invert"
                 />
+
+                {/* REACT: Bump to h-8 to make the 'React' text legible */}
                 <Image
                   src="/react.svg"
                   alt="React"
-                  width={170}
-                  height={48}
-                  className="h-8 w-28 object-contain invert brightness-0 opacity-50"
+                  width={100}
+                  height={32}
+                  className="h-8 w-auto object-contain brightness-0 invert"
                 />
               </div>
             </div>
@@ -231,6 +234,58 @@ export default function HomePage() {
                   <p className="font-mono text-xs text-zinc-400">
                     Render path: engineered for speed
                   </p>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+        </section>
+
+        <section className="py-24">
+          <FadeIn>
+            <div className="rounded-3xl border border-zinc-800 bg-zinc-900/20 p-8 md:p-12">
+              <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+                <div className="space-y-6">
+                  <h2 className="text-3xl font-semibold">Visual Dominance.</h2>
+                  <p className="text-lg text-zinc-400">
+                    Speed doesn&apos;t mean ugly. We deliver high-fidelity aesthetics
+                    that load instantly. Your competitors look like 2015. You look like 2030.
+                  </p>
+                  <ul className="space-y-3 text-zinc-400">
+                    <li className="flex items-center gap-3">
+                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-green-500/10 text-xs text-green-500">✓</span>
+                      4K Image Clarity (WebP)
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-green-500/10 text-xs text-green-500">✓</span>
+                      Fluid Animations (60 FPS)
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-green-500/10 text-xs text-green-500">✓</span>
+                      Dark Mode Optimized
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Visual Proof Container */}
+                <div className="relative mx-auto w-full max-w-[300px]">
+                  <div className="aspect-[9/19] relative">
+                    {/* Placeholder until image is ready */}
+                    <div className="absolute inset-0 flex items-center justify-center rounded-[2.5rem] border border-zinc-800 bg-zinc-950 text-center text-zinc-600">
+                      <span className="p-4 text-sm font-mono">
+                        [ Insert Screenshot Here: public/mobile-mockup.png ]
+                      </span>
+                    </div>
+
+                    {/* UNCOMMENT THIS AFTER ADDING FILE:
+                    <Image
+                      src="/mobile-mockup.png"
+                      alt="Mobile Experience"
+                      fill
+                      className="object-contain"
+                    />
+                    */}
+                  </div>
+                  <div className="absolute -inset-4 -z-10 rounded-full bg-green-500/20 blur-3xl opacity-20" />
                 </div>
               </div>
             </div>
@@ -319,7 +374,7 @@ export default function HomePage() {
             {arsenalCards.map((card) => (
               <div
                 key={card.title}
-                className="rounded-2xl border border-zinc-800 bg-zinc-900/30 p-6 transition hover:border-green-500/80"
+                className="rounded-2xl border border-zinc-800 bg-zinc-900/30 p-6"
               >
                 <h3 className="text-lg font-semibold text-zinc-100">{card.title}</h3>
                 <p className="mt-3 text-sm text-zinc-400">{card.body}</p>
@@ -360,7 +415,6 @@ export default function HomePage() {
               <p className="text-lg text-zinc-300">
                 You are losing leads every second your current site loads. Stop the bleeding.
               </p>
-              {/* STEALTH UPDATE: Changed to hello@ */}
               <a
                 href="mailto:hello@subsecondlabs.com"
                 className="inline-flex items-center justify-center rounded-md border border-green-500/70 bg-green-500/15 px-6 py-3 text-base font-semibold text-green-500 transition hover:border-green-500 hover:bg-green-500/25 hover:text-green-500 terminal-glow"
@@ -391,7 +445,6 @@ export default function HomePage() {
             <a href="/terms" className="transition hover:text-zinc-400">
               Terms of Service
             </a>
-            {/* STEALTH UPDATE: Changed to hello@ */}
             <a
               href="mailto:hello@subsecondlabs.com"
               className="transition hover:text-zinc-400"
