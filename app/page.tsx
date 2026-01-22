@@ -2,16 +2,18 @@ import Image from "next/image";
 import { ArrowRight, Gauge, Hammer, Rocket, Scan } from "lucide-react";
 import { FadeIn } from "./components/FadeIn";
 
+const AUDIT_URL = "https://tally.so/r/Pdz6ad";
+
 const specRows = [
   {
     label: "Load Time",
     standard: "4.2s - 8.0s",
-    custom: "< 1.0s (Sub-Second)",
+    custom: "< 1.0s",
   },
   {
     label: "Security",
     standard: "Vulnerable Plugins",
-    custom: "Bank-Grade Encryption",
+    custom: "Bank-Grade",
   },
   {
     label: "SEO",
@@ -20,7 +22,7 @@ const specRows = [
   },
   {
     label: "Maintenance",
-    standard: "Monthly Fees & Updates",
+    standard: "Monthly Fees",
     custom: "Zero Maintenance",
   },
 ];
@@ -88,54 +90,74 @@ const faqItems = [
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-[#050505] text-zinc-50">
-      <header className="sticky top-0 z-40 border-b border-zinc-800/80 bg-black/70 backdrop-blur-md">
+    <div className="min-h-screen bg-[#050505] text-zinc-50 selection:bg-green-500/30 selection:text-green-500">
+
+      {/* --- BACKGROUND TEXTURE --- */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-green-500 opacity-20 blur-[100px]"></div>
+      </div>
+
+      <header className="sticky top-0 z-40 border-b border-zinc-800/80 bg-[#050505]/80 backdrop-blur-md">
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <div className="flex items-center gap-3 tracking-tight">
+          <div className="flex items-center gap-2">
             <Image
               src="/logo.svg"
               alt="SubSecond Labs"
-              width={210}
-              height={48}
-              className="h-12 w-auto"
+              width={32}
+              height={32}
+              className="h-8 w-8"
               priority
             />
+            <span className="text-xl font-bold tracking-tight text-white">
+              SubSecond<span className="text-green-500">Labs</span>
+            </span>
           </div>
           <a
-            href="mailto:hello@subsecondlabs.com"
-            className="inline-flex items-center gap-2 rounded-md border border-green-500/70 bg-green-500/15 px-4 py-2 text-sm font-semibold text-green-500 transition hover:border-green-500 hover:bg-green-500/25 hover:text-green-500 terminal-glow"
+            href={AUDIT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-md border border-green-500/70 bg-green-500/10 px-4 py-2 text-sm font-semibold text-green-500 transition hover:border-green-500 hover:bg-green-500/20 hover:text-green-400 hover:shadow-[0_0_20px_rgba(167,255,84,0.3)]"
           >
             [ Get Audit ]
           </a>
         </nav>
       </header>
 
-      <main className="mx-auto flex max-w-6xl flex-col gap-20 px-6 pb-24 pt-16">
+      <main className="relative z-10 mx-auto flex max-w-6xl flex-col gap-24 px-6 pb-24 pt-16">
+
+        {/* HERO */}
         <section className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <FadeIn>
-            <div className="space-y-6">
-              <p className="text-sm uppercase tracking-[0.3em] text-green-500">
+            <div className="space-y-8">
+              <div className="inline-flex items-center gap-2 rounded-full border border-green-500/30 bg-green-500/10 px-3 py-1 text-xs font-medium text-green-500">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
                 Cyber-Industrial Performance
-              </p>
-              <h1 className="text-4xl font-semibold leading-tight md:text-5xl">
-                We Engineer Sub-Second Websites for High-Ticket Contractors.
+              </div>
+
+              {/* HEADLINE */}
+              <h1 className="text-5xl font-semibold leading-[1.1] tracking-tight text-white md:text-6xl text-balance">
+                We Engineer <span className="whitespace-nowrap text-green-500">Sub-Second</span> Websites.
               </h1>
-              <p className="max-w-xl text-lg text-zinc-400">
+
+              <p className="max-w-xl text-lg text-zinc-400 leading-relaxed">
                 Stop losing Google Ad leads to slow load times. We guarantee a
-                90+ Mobile Performance Score or you don&apos;t pay.
+                90+ Mobile Performance Score for high-ticket contractors or you don&apos;t pay.
               </p>
-              <div className="flex flex-wrap items-center gap-4">
+              <div className="flex flex-wrap items-center gap-4 pt-2">
                 <a
                   href="#problem"
-                  className="inline-flex items-center gap-2 rounded-md border border-zinc-700 bg-zinc-900/70 px-5 py-3 text-sm font-medium text-zinc-50 transition hover:border-green-500/70 hover:text-green-500"
+                  className="group inline-flex items-center gap-2 rounded-md border border-zinc-700 bg-zinc-900/80 px-6 py-3 text-sm font-medium text-zinc-50 transition hover:border-green-500/50 hover:text-green-500"
                 >
-                  View the Performance Standard
-                  <ArrowRight className="h-4 w-4" />
+                  View the Standard
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </a>
-                <div className="flex items-center gap-3 text-xs text-zinc-400">
-                  <Gauge className="h-4 w-4 text-green-500" />
-                  LCP target:{" "}
-                  <span className="font-mono text-green-500">0.8s</span>
+                <div className="flex items-center gap-3 text-xs text-zinc-500">
+                  <div className="h-px w-8 bg-zinc-800"></div>
+                  LCP target: <span className="font-mono text-green-500">0.8s</span>
                 </div>
               </div>
             </div>
@@ -143,12 +165,12 @@ export default function HomePage() {
 
           <FadeIn delay={0.1}>
             <div className="flex items-center justify-center">
-              <div className="relative flex h-56 w-56 flex-col items-center justify-center rounded-full border border-green-500/40 bg-green-500/10 text-center shadow-[0_0_35px_rgba(167,255,84,0.4)] terminal-glow">
-                <div className="text-6xl font-semibold text-white">100</div>
-                <div className="mt-1 text-xs uppercase tracking-[0.25em] text-green-500">
+              <div className="relative flex h-56 w-56 lg:h-64 lg:w-64 flex-col items-center justify-center rounded-full border border-green-500/30 bg-green-500/5 text-center shadow-[0_0_60px_rgba(167,255,84,0.15)] backdrop-blur-sm">
+                <div className="text-6xl lg:text-7xl font-bold tracking-tighter text-white">100</div>
+                <div className="mt-2 text-xs uppercase tracking-[0.25em] text-green-500 font-semibold">
                   Lighthouse
                 </div>
-                <div className="mt-2 rounded-full border border-green-500/40 px-4 py-1 text-[10px] uppercase tracking-[0.2em] text-green-500">
+                <div className="mt-3 rounded-full border border-green-500/30 bg-green-500/10 px-4 py-1 text-[10px] uppercase tracking-[0.2em] text-green-500">
                   Mobile
                 </div>
               </div>
@@ -156,14 +178,14 @@ export default function HomePage() {
           </FadeIn>
         </section>
 
-        <section className="border-y border-zinc-800/80 py-16">
+        {/* LOGOS */}
+        <section className="border-y border-zinc-800/60 bg-black/40 py-12 backdrop-blur-sm">
           <FadeIn delay={0.05}>
-            <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-              <p className="text-xs uppercase tracking-[0.35em] text-zinc-400">
+            <div className="flex flex-col items-start md:flex-row md:items-center gap-12 md:gap-24">
+              <p className="text-xs uppercase tracking-[0.35em] text-zinc-500 font-medium shrink-0">
                 Engineered On
               </p>
-              <div className="flex flex-wrap items-center gap-12 opacity-70 transition duration-500 hover:opacity-100">
-                {/* NEXT.JS (h-7) */}
+              <div className="flex flex-wrap items-center gap-12 opacity-50 grayscale transition duration-500 hover:grayscale-0 hover:opacity-100">
                 <Image
                   src="/nextjs.svg"
                   alt="Next.js"
@@ -171,8 +193,6 @@ export default function HomePage() {
                   height={30}
                   className="h-7 w-auto object-contain brightness-0 invert"
                 />
-
-                {/* VERCEL (h-6) */}
                 <Image
                   src="/vercel.svg"
                   alt="Vercel"
@@ -180,8 +200,6 @@ export default function HomePage() {
                   height={25}
                   className="h-6 w-auto object-contain brightness-0 invert"
                 />
-
-                {/* REACT (h-8) */}
                 <Image
                   src="/react.svg"
                   alt="React"
@@ -194,10 +212,11 @@ export default function HomePage() {
           </FadeIn>
         </section>
 
-        <section id="problem" className="space-y-10">
+        {/* PROBLEM / SOLUTION */}
+        <section id="problem" className="space-y-12">
           <FadeIn>
             <div className="space-y-4">
-              <h2 className="text-3xl font-semibold">The 3-Second Rule.</h2>
+              <h2 className="text-3xl font-semibold tracking-tight text-white">The 3-Second Rule.</h2>
               <p className="max-w-2xl text-lg text-zinc-400">
                 53% of mobile traffic leaves if your site takes over 3 seconds to
                 load. Your current site is burning your ad budget.
@@ -207,125 +226,143 @@ export default function HomePage() {
 
           <FadeIn delay={0.05}>
             <div className="grid gap-6 md:grid-cols-2">
-              <div className="glass-panel grid-border rounded-2xl p-6">
-                <p className="text-sm uppercase tracking-[0.3em] text-red-400">
-                  Average WordPress Site
+              <div className="relative overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/30 p-8">
+                <p className="text-xs uppercase tracking-[0.2em] text-red-400 font-semibold">
+                  Legacy WordPress
                 </p>
-                <div className="mt-6 space-y-3">
-                  <div className="text-3xl font-semibold text-red-300">
+                <div className="mt-6 space-y-2">
+                  <div className="text-4xl font-semibold text-red-300">
                     6.5s Load
                   </div>
-                  <p className="text-zinc-400">Lost Leads</p>
-                  <p className="font-mono text-xs text-zinc-400">
-                    Render path: bloated plugins
-                  </p>
+                  <p className="text-zinc-500">Bleeding Ad Spend</p>
                 </div>
               </div>
 
-              <div className="glass-panel grid-border rounded-2xl p-6">
-                <p className="text-sm uppercase tracking-[0.3em] text-green-500">
+              <div className="relative overflow-hidden rounded-2xl border border-green-500/30 bg-green-500/5 p-8 shadow-[0_0_30px_rgba(167,255,84,0.05)]">
+                <div className="absolute top-0 right-0 p-4 opacity-20">
+                  <Rocket className="h-12 w-12 text-green-500" />
+                </div>
+                <p className="text-xs uppercase tracking-[0.2em] text-green-500 font-semibold">
                   SubSecond Build
                 </p>
-                <div className="mt-6 space-y-3">
-                  <div className="text-3xl font-semibold text-green-500">
+                <div className="mt-6 space-y-2">
+                  <div className="text-4xl font-semibold text-green-500">
                     0.8s Load
                   </div>
-                  <p className="text-zinc-300">Captured Revenue</p>
-                  <p className="font-mono text-xs text-zinc-400">
-                    Render path: engineered for speed
-                  </p>
+                  <p className="text-zinc-400">Maximum Conversion</p>
                 </div>
               </div>
             </div>
           </FadeIn>
         </section>
 
-        <section className="py-24">
+        {/* VISUAL DOMINANCE */}
+        <section className="py-12">
           <FadeIn>
-            <div className="rounded-3xl border border-zinc-800 bg-zinc-900/20 p-8 md:p-12">
-              <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-                <div className="space-y-6">
-                  <h2 className="text-3xl font-semibold">Visual Dominance.</h2>
-                  <p className="text-lg text-zinc-400">
+            <div className="relative overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900/40 p-8 md:p-16">
+              <div className="absolute top-0 right-0 -mr-20 -mt-20 h-[400px] w-[400px] rounded-full bg-green-500/10 blur-[80px]"></div>
+
+              <div className="relative z-10 grid gap-16 lg:grid-cols-2 lg:items-center">
+                <div className="space-y-8">
+                  <h2 className="text-4xl font-semibold text-white">Visual Dominance.</h2>
+                  <p className="text-lg text-zinc-400 leading-relaxed">
                     Speed doesn&apos;t mean ugly. We deliver high-fidelity aesthetics
                     that load instantly. Your competitors look like 2015. You look like 2030.
                   </p>
-                  <ul className="space-y-3 text-zinc-400">
-                    <li className="flex items-center gap-3">
-                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-green-500/10 text-xs text-green-500">✓</span>
+                  <ul className="space-y-4">
+                    <li className="flex items-center gap-4 text-zinc-300">
+                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-green-500/20 text-xs text-green-500">✓</div>
                       4K Image Clarity (WebP)
                     </li>
-                    <li className="flex items-center gap-3">
-                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-green-500/10 text-xs text-green-500">✓</span>
+                    <li className="flex items-center gap-4 text-zinc-300">
+                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-green-500/20 text-xs text-green-500">✓</div>
                       Fluid Animations (60 FPS)
                     </li>
-                    <li className="flex items-center gap-3">
-                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-green-500/10 text-xs text-green-500">✓</span>
+                    <li className="flex items-center gap-4 text-zinc-300">
+                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-green-500/20 text-xs text-green-500">✓</div>
                       Dark Mode Optimized
                     </li>
                   </ul>
                 </div>
 
-                {/* Visual Proof Container */}
-                <div className="relative mx-auto w-full max-w-[300px]">
-                  <div className="aspect-[9/19] relative">
+                <div className="relative mx-auto w-full max-w-[380px]">
+                  <div className="relative aspect-[9/18.5] drop-shadow-2xl">
                     <Image
                       src="/mobile-mockup.png"
-                      alt="Mobile Experience"
+                      alt="High-Ticket Mobile Experience"
                       fill
                       className="object-contain"
+                      priority
                     />
                   </div>
-                  <div className="absolute -inset-4 -z-10 rounded-full bg-green-500/20 blur-3xl opacity-20" />
+                  <div className="absolute top-1/2 left-1/2 -z-10 h-[80%] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-green-500/20 blur-[60px]"></div>
                 </div>
               </div>
             </div>
           </FadeIn>
         </section>
 
-        <section className="space-y-10">
+        {/* TECH SPECS */}
+        <section className="space-y-12">
           <FadeIn>
             <div className="space-y-4">
-              <h2 className="text-3xl font-semibold">The Hardware Difference.</h2>
+              <h2 className="text-3xl font-semibold text-white">The Hardware Difference.</h2>
               <p className="max-w-2xl text-lg text-zinc-400">
                 The stack is the product. Compare a legacy WordPress build to a SubSecond
-                custom deployment tuned for speed and resilience.
+                custom deployment.
               </p>
             </div>
           </FadeIn>
 
-          <div className="glass-panel grid-border rounded-2xl p-6">
-            <div className="grid gap-4 border-b border-zinc-800 pb-4 md:grid-cols-[1fr_1fr_1fr]">
-              <div className="text-xs uppercase tracking-[0.3em] text-zinc-500">Spec</div>
-              <div className="text-xs uppercase tracking-[0.3em] text-zinc-500">
-                Standard WordPress
-              </div>
-              <div className="text-xs uppercase tracking-[0.3em] text-zinc-500">
-                SubSecond Custom Build
-              </div>
+          <div className="overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/20">
+            {/* Desktop Header (Hidden on Mobile) */}
+            <div className="hidden md:grid gap-4 border-b border-zinc-800 bg-zinc-900/50 p-6 grid-cols-[1fr_1fr_1fr]">
+              <div className="text-xs uppercase tracking-[0.2em] text-zinc-500">Spec</div>
+              <div className="text-xs uppercase tracking-[0.2em] text-zinc-500">Standard</div>
+              <div className="text-xs uppercase tracking-[0.2em] text-green-500">SubSecond</div>
             </div>
-            <div className="mt-4 grid gap-4">
+
+            <div className="p-6 grid gap-6 md:gap-0">
               {specRows.map((row) => (
                 <div
                   key={row.label}
-                  className="grid gap-3 border-b border-zinc-800/60 pb-4 last:border-b-0 last:pb-0 md:grid-cols-[1fr_1fr_1fr]"
+                  className="grid grid-cols-2 gap-y-4 gap-x-4 border-b border-zinc-800/50 pb-6 md:pb-6 last:border-b-0 last:pb-0 md:grid-cols-[1fr_1fr_1fr] md:items-center"
                 >
-                  <div className="text-sm font-semibold text-zinc-200">{row.label}</div>
-                  <div className="text-sm text-red-300">{row.standard}</div>
-                  <div className="text-sm font-semibold text-[#a3ff12]">{row.custom}</div>
+                  {/* Label: Full Width on Mobile */}
+                  <div className="text-sm font-semibold text-zinc-200 col-span-2 md:col-span-1 border-b border-zinc-800/30 md:border-none pb-2 md:pb-0">
+                    {row.label}
+                  </div>
+
+                  {/* Standard (Red) */}
+                  <div className="flex flex-col gap-1">
+                    <span className="md:hidden text-[10px] uppercase tracking-wider text-red-400/50 font-medium">
+                      Average
+                    </span>
+                    <span className="text-sm text-red-400/80">{row.standard}</span>
+                  </div>
+
+                  {/* Custom (Green) - Aligned Right on Mobile */}
+                  <div className="flex flex-col gap-1 items-end md:items-start">
+                    <span className="md:hidden text-[10px] uppercase tracking-wider text-green-500/50 font-medium">
+                      SubSecond
+                    </span>
+                    <span className="text-sm font-semibold text-green-500 text-right md:text-left">
+                      {row.custom}
+                    </span>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="space-y-10">
+        {/* PROCESS */}
+        <section className="space-y-12">
           <FadeIn>
             <div className="space-y-4">
-              <h2 className="text-3xl font-semibold">From Audit to Launch in 7 Days.</h2>
+              <h2 className="text-3xl font-semibold text-white">From Audit to Launch in 7 Days.</h2>
               <p className="max-w-2xl text-lg text-zinc-400">
-                A tight, repeatable protocol that ships a performance-first site fast without
-                sacrificing build quality.
+                A tight, repeatable protocol that ships a performance-first site fast.
               </p>
             </div>
           </FadeIn>
@@ -335,13 +372,13 @@ export default function HomePage() {
               const Icon = step.icon;
               return (
                 <FadeIn key={step.title} delay={0.05 * index}>
-                  <div className="glass-panel grid-border flex h-full flex-col gap-4 rounded-2xl p-6">
-                    <div className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-zinc-500">
-                      <span>Step {index + 1}</span>
-                      <Icon className="h-5 w-5 text-[#a3ff12]" />
+                  <div className="group relative h-full rounded-2xl border border-zinc-800 bg-zinc-900/20 p-8 transition hover:border-zinc-700 hover:bg-zinc-900/40">
+                    <div className="flex items-center justify-between text-xs uppercase tracking-[0.2em] text-zinc-600 group-hover:text-zinc-500">
+                      <span>0{index + 1}</span>
+                      <Icon className="h-5 w-5 text-green-500 opacity-60 transition group-hover:opacity-100" />
                     </div>
-                    <h3 className="text-xl font-semibold text-zinc-100">{step.title}</h3>
-                    <p className="text-sm text-zinc-400">{step.body}</p>
+                    <h3 className="mt-6 text-xl font-semibold text-zinc-100">{step.title}</h3>
+                    <p className="mt-3 text-sm text-zinc-400 leading-relaxed">{step.body}</p>
                   </div>
                 </FadeIn>
               );
@@ -349,66 +386,44 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="space-y-10">
+        {/* FEATURES GRID */}
+        <section className="space-y-12">
           <FadeIn>
-            <div className="space-y-4">
-              <h2 className="text-3xl font-semibold">
-                Built on the Modern Web&apos;s Bleeding Edge.
-              </h2>
-              <p className="max-w-2xl text-lg text-zinc-400">
-                We don&apos;t use plugins. We use raw engineering.
-              </p>
-            </div>
+            <h2 className="text-3xl font-semibold text-white">
+              Built on the Modern Web&apos;s Bleeding Edge.
+            </h2>
           </FadeIn>
 
           <div className="grid gap-6 md:grid-cols-3">
             {arsenalCards.map((card) => (
               <div
                 key={card.title}
-                className="rounded-2xl border border-zinc-800 bg-zinc-900/30 p-6"
+                className="rounded-xl border border-zinc-800 bg-zinc-900/20 p-6 transition hover:bg-zinc-900/40"
               >
-                <h3 className="text-lg font-semibold text-zinc-100">{card.title}</h3>
-                <p className="mt-3 text-sm text-zinc-400">{card.body}</p>
+                <h3 className="text-base font-semibold text-zinc-200">{card.title}</h3>
+                <p className="mt-2 text-sm text-zinc-500">{card.body}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="space-y-10">
-          <FadeIn>
-            <div className="space-y-4">
-              <h2 className="text-3xl font-semibold">Technical Briefing.</h2>
-              <p className="max-w-2xl text-lg text-zinc-400">
-                Straight answers to the most common production questions before you commit.
-              </p>
-            </div>
-          </FadeIn>
-
-          <div className="grid gap-6 md:grid-cols-3">
-            {faqItems.map((item) => (
-              <div key={item.question} className="glass-panel grid-border rounded-2xl p-6">
-                <h3 className="text-lg font-semibold text-zinc-100">{item.question}</h3>
-                <p className="mt-3 text-sm text-zinc-400">{item.answer}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="min-h-[50vh]">
-          <div className="glass-panel grid-border flex h-full flex-col justify-between gap-10 rounded-3xl bg-[radial-gradient(circle_at_top,_rgba(163,255,18,0.2),_rgba(5,5,5,0.95)_65%)] px-6 py-16 text-center sm:px-10 lg:px-16">
-            <div className="mx-auto max-w-3xl space-y-6">
-              <p className="text-xs uppercase tracking-[0.35em] text-zinc-400">
-                The Kill
-              </p>
-              <h2 className="text-4xl font-semibold text-zinc-50 md:text-5xl">
+        {/* CTA */}
+        <section className="py-12">
+          <div className="relative overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900/30 px-6 py-24 text-center sm:px-16">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[300px] w-[300px] rounded-full bg-green-500/20 blur-[100px]"></div>
+            <div className="relative z-10 mx-auto max-w-2xl space-y-8">
+              <h2 className="text-4xl font-bold tracking-tight text-white md:text-5xl">
                 Ready to weaponize your website?
               </h2>
-              <p className="text-lg text-zinc-300">
+              <p className="text-lg text-zinc-400">
                 You are losing leads every second your current site loads. Stop the bleeding.
               </p>
+              {/* BUTTON UPDATE: text-black for visibility on neon */}
               <a
-                href="mailto:hello@subsecondlabs.com"
-                className="inline-flex items-center justify-center rounded-md border border-green-500/70 bg-green-500/15 px-6 py-3 text-base font-semibold text-green-500 transition hover:border-green-500 hover:bg-green-500/25 hover:text-green-500 terminal-glow"
+                href={AUDIT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-lg bg-green-500 px-8 py-4 text-base font-bold text-black shadow-[0_0_20px_rgba(167,255,84,0.4)] transition hover:bg-[#97f044] hover:shadow-[0_0_30px_rgba(167,255,84,0.6)]"
               >
                 Get Your Free Audit
               </a>
@@ -417,31 +432,27 @@ export default function HomePage() {
         </section>
       </main>
 
-      <footer className="border-t border-zinc-900 bg-[#050505] py-12 text-xs text-zinc-600">
+      <footer className="border-t border-zinc-900 bg-[#020202] py-12 text-xs text-zinc-600">
         <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-6 md:flex-row md:items-center">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <Image
               src="/logo.svg"
               alt="SubSecond Labs"
-              width={120}
-              height={28}
-              className="h-6 w-auto opacity-70 grayscale"
+              width={24}
+              height={24}
+              className="h-6 w-6 opacity-70 grayscale"
             />
-            <span>© 2026 SubSecond Labs. All rights reserved.</span>
+            <span className="text-base font-semibold tracking-tight text-zinc-400">
+              SubSecond Labs
+            </span>
+            <span className="text-xs text-zinc-500">
+              © 2026 SubSecond Labs. All rights reserved.
+            </span>
           </div>
-          <div className="flex flex-wrap items-center gap-4">
-            <a href="/privacy" className="transition hover:text-zinc-400">
-              Privacy Policy
-            </a>
-            <a href="/terms" className="transition hover:text-zinc-400">
-              Terms of Service
-            </a>
-            <a
-              href="mailto:hello@subsecondlabs.com"
-              className="transition hover:text-zinc-400"
-            >
-              hello@subsecondlabs.com
-            </a>
+          <div className="flex flex-wrap items-center gap-6">
+            <a href="/privacy" className="hover:text-zinc-400">Privacy Policy</a>
+            <a href="/terms" className="hover:text-zinc-400">Terms of Service</a>
+            <a href="mailto:hello@subsecondlabs.com" className="hover:text-zinc-400">hello@subsecondlabs.com</a>
           </div>
         </div>
       </footer>
