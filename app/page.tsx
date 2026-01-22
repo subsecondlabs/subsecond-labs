@@ -163,7 +163,7 @@ export default function HomePage() {
                 Engineered On
               </p>
               <div className="flex flex-wrap items-center gap-12 opacity-70 transition duration-500 hover:opacity-100">
-                {/* NEXT.JS: The Anchor (Keep at h-7) */}
+                {/* NEXT.JS (h-7) */}
                 <Image
                   src="/nextjs.svg"
                   alt="Next.js"
@@ -172,7 +172,7 @@ export default function HomePage() {
                   className="h-7 w-auto object-contain brightness-0 invert"
                 />
 
-                {/* VERCEL: Shrink to h-6 so the text aligns with Next.js */}
+                {/* VERCEL (h-6) */}
                 <Image
                   src="/vercel.svg"
                   alt="Vercel"
@@ -181,7 +181,7 @@ export default function HomePage() {
                   className="h-6 w-auto object-contain brightness-0 invert"
                 />
 
-                {/* REACT: Bump to h-8 to make the 'React' text legible */}
+                {/* REACT (h-8) */}
                 <Image
                   src="/react.svg"
                   alt="React"
@@ -269,21 +269,12 @@ export default function HomePage() {
                 {/* Visual Proof Container */}
                 <div className="relative mx-auto w-full max-w-[300px]">
                   <div className="aspect-[9/19] relative">
-                    {/* Placeholder until image is ready */}
-                    <div className="absolute inset-0 flex items-center justify-center rounded-[2.5rem] border border-zinc-800 bg-zinc-950 text-center text-zinc-600">
-                      <span className="p-4 text-sm font-mono">
-                        [ Insert Screenshot Here: public/mobile-mockup.png ]
-                      </span>
-                    </div>
-
-                    {/* UNCOMMENT THIS AFTER ADDING FILE:
                     <Image
                       src="/mobile-mockup.png"
                       alt="Mobile Experience"
                       fill
                       className="object-contain"
                     />
-                    */}
                   </div>
                   <div className="absolute -inset-4 -z-10 rounded-full bg-green-500/20 blur-3xl opacity-20" />
                 </div>
