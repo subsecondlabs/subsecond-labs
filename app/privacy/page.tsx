@@ -15,8 +15,8 @@ export default function PrivacyPolicyPage() {
           Privacy Policy
         </h1>
         <p className="mb-8 leading-relaxed text-zinc-400">
-          <strong>Effective Date:</strong> January 21, 2026<br />
-          <strong>Last Updated:</strong> January 21, 2026
+          <strong>Effective Date:</strong> January 22, 2026<br />
+          <strong>Last Updated:</strong> January 22, 2026
         </p>
         <p className="mb-8 leading-relaxed text-zinc-400">
           <strong>SubSecond Labs</strong> ("Company", "We", "Us", or "Our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or engage our web engineering services.
@@ -86,15 +86,14 @@ export default function PrivacyPolicyPage() {
           We retain client project files, code repositories, and communication records for a period of <strong>12 months post-completion</strong> for backup, maintenance, and legal liability purposes. You may request permanent deletion of your data at any time by contacting us.
         </p>
 
-        <h2 className="mb-4 mt-12 text-xl font-semibold text-white">9. Your Data Protection Rights (GDPR & CCPA)</h2>
+        <h2 className="mb-4 mt-12 text-xl font-semibold text-white">9. Your Data Protection Rights (Universal)</h2>
         <p className="mb-4 leading-relaxed text-zinc-400">
-          Depending on your location, you have the following rights:
+          We are committed to data privacy for all users, regardless of location.
         </p>
         <ul className="list-disc space-y-2 pl-5 text-zinc-400">
-          <li><strong>Right to Access:</strong> Request copies of your personal data.</li>
-          <li><strong>Right to Rectification:</strong> Request correction of inaccurate data.</li>
-          <li><strong>Right to Deletion:</strong> Request erasure of your personal data.</li>
-          <li><strong>Right to Opt-Out:</strong> We do not sell personal data. However, California residents have the right to opt-out of the sale of personal information.</li>
+          <li><strong>Right to Access & Rectification:</strong> Request copies or corrections of your personal data.</li>
+          <li><strong>Right to Deletion:</strong> Request erasure of your personal data ("Right to be Forgotten").</li>
+          <li><strong>Right to Opt-Out:</strong> We do not sell personal data. To demonstrate our commitment to privacy, we voluntarily extend the right to opt-out of data sales to all users globally, which also satisfies the specific requirements for California residents under the CCPA.</li>
         </ul>
 
         <h2 className="mb-4 mt-12 text-xl font-semibold text-white">10. Children's Privacy</h2>
@@ -107,9 +106,8 @@ export default function PrivacyPolicyPage() {
           In accordance with the Information Technology Act, 2000 and the Digital Personal Data Protection Act, 2023, the contact details of the Grievance Officer are provided below:
         </p>
         <p className="mb-4 leading-relaxed text-zinc-400">
-          <strong>Name:</strong> Rakshit Singh<br />
           <strong>Designation:</strong> Grievance Officer<br />
-          <strong>Email:</strong> <a href="mailto:rakshit@subsecondlabs.com" className="text-green-500 hover:text-green-400">rakshit@subsecondlabs.com</a><br />
+          <strong>Email:</strong> <a href="mailto:legal@subsecondlabs.com" className="text-green-500 hover:text-green-400">legal@subsecondlabs.com</a><br />
           <strong>Address:</strong> Uttarakhand, India
         </p>
 
@@ -118,7 +116,7 @@ export default function PrivacyPolicyPage() {
           For general privacy concerns or to exercise your rights, you may contact us at:<br /><br />
           <strong>SubSecond Labs</strong><br />
           Uttarakhand, India<br />
-          <strong>Email:</strong> <a href="mailto:rakshit@subsecondlabs.com" className="text-green-500 hover:text-green-400">rakshit@subsecondlabs.com</a>
+          <strong>Email:</strong> <a href="mailto:legal@subsecondlabs.com" className="text-green-500 hover:text-green-400">legal@subsecondlabs.com</a>
         </p>
       </main>
     </div>

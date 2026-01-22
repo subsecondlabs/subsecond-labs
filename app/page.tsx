@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ArrowRight, Gauge, Hammer, Rocket, Scan } from "lucide-react";
 import { FadeIn } from "./components/FadeIn";
 
+// RUTHLESS UPDATE: Aggressive Copy Installed
 const specRows = [
   {
     label: "Load Time",
@@ -11,17 +12,17 @@ const specRows = [
   {
     label: "Security",
     standard: "Vulnerable Plugins",
-    custom: "Immutable Edge Network",
+    custom: "Bank-Grade Encryption", // Trustworthy & Strong
   },
   {
     label: "SEO",
-    standard: "Bloated code",
-    custom: "Semantic HTML5",
+    standard: "Google Penalized",     // Fear Trigger (Keep this!)
+    custom: "Google Preferred",       // Authority Trigger
   },
   {
     label: "Maintenance",
-    standard: "Monthly Updates Required",
-    custom: "Zero Maintenance",
+    standard: "Monthly Fees & Updates", // The Pain Point
+    custom: "Zero Maintenance",         // The Solution (Keep this!)
   },
 ];
 
@@ -101,8 +102,9 @@ export default function HomePage() {
               priority
             />
           </div>
+          {/* STEALTH UPDATE: Changed to hello@ */}
           <a
-            href="mailto:rakshit@subsecondlabs.com"
+            href="mailto:hello@subsecondlabs.com"
             className="inline-flex items-center gap-2 rounded-md border border-green-500/70 bg-green-500/15 px-4 py-2 text-sm font-semibold text-green-500 transition hover:border-green-500 hover:bg-green-500/25 hover:text-green-500 terminal-glow"
           >
             [ Get Audit ]
@@ -160,7 +162,7 @@ export default function HomePage() {
           <FadeIn delay={0.05}>
             <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
               <p className="text-xs uppercase tracking-[0.35em] text-zinc-400">
-                Powered By
+                Engineered On
               </p>
               <div className="flex flex-wrap items-center gap-8 text-zinc-400">
                 <Image
@@ -168,21 +170,21 @@ export default function HomePage() {
                   alt="Next.js"
                   width={180}
                   height={48}
-                  className="h-8 w-auto invert brightness-0 opacity-50"
+                  className="h-8 w-28 object-contain invert brightness-0 opacity-50"
                 />
                 <Image
                   src="/vercel.svg"
                   alt="Vercel"
                   width={160}
                   height={48}
-                  className="h-8 w-auto invert brightness-0 opacity-50"
+                  className="h-8 w-28 object-contain invert brightness-0 opacity-50"
                 />
                 <Image
                   src="/react.svg"
                   alt="React"
                   width={170}
                   height={48}
-                  className="h-8 w-auto invert brightness-0 opacity-50"
+                  className="h-8 w-28 object-contain invert brightness-0 opacity-50"
                 />
               </div>
             </div>
@@ -358,8 +360,9 @@ export default function HomePage() {
               <p className="text-lg text-zinc-300">
                 You are losing leads every second your current site loads. Stop the bleeding.
               </p>
+              {/* STEALTH UPDATE: Changed to hello@ */}
               <a
-                href="mailto:rakshit@subsecondlabs.com"
+                href="mailto:hello@subsecondlabs.com"
                 className="inline-flex items-center justify-center rounded-md border border-green-500/70 bg-green-500/15 px-6 py-3 text-base font-semibold text-green-500 transition hover:border-green-500 hover:bg-green-500/25 hover:text-green-500 terminal-glow"
               >
                 Get Your Free Audit
@@ -388,11 +391,12 @@ export default function HomePage() {
             <a href="/terms" className="transition hover:text-zinc-400">
               Terms of Service
             </a>
+            {/* STEALTH UPDATE: Changed to hello@ */}
             <a
-              href="mailto:rakshit@subsecondlabs.com"
+              href="mailto:hello@subsecondlabs.com"
               className="transition hover:text-zinc-400"
             >
-              rakshit@subsecondlabs.com
+              hello@subsecondlabs.com
             </a>
           </div>
         </div>

@@ -18,6 +18,12 @@ export const metadata: Metadata = {
   title: "SubSecond Labs — Sub-Second Web Engineering",
   description:
     "We engineer sub-second websites for high-ticket contractors. 90+ mobile performance score guaranteed or you don't pay.",
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", type: "image/x-icon" },
+    ],
+  },
 };
 
 export default function RootLayout({

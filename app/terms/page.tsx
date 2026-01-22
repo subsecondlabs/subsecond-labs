@@ -15,8 +15,8 @@ export default function TermsOfServicePage() {
           Terms of Service
         </h1>
         <p className="mb-8 leading-relaxed text-zinc-400">
-          <strong>Effective Date:</strong> January 21, 2026<br />
-          <strong>Last Updated:</strong> January 21, 2026
+          <strong>Effective Date:</strong> January 22, 2026<br />
+          <strong>Last Updated:</strong> January 22, 2026
         </p>
         <p className="mb-8 leading-relaxed text-zinc-400">
           These Terms of Service ("Terms") constitute a binding legal agreement between <strong>SubSecond Labs</strong> ("Agency", "We", "Us") and the entity engaging our services ("Client", "You"). By accepting a Proposal, paying a deposit, or using our Services, you agree to be bound by these Terms.
@@ -87,7 +87,7 @@ export default function TermsOfServicePage() {
           <p><strong>9.3 Marketing Rights:</strong> Unless a strict NDA is signed, the Agency retains the right to display the final Project in its portfolio and marketing materials to demonstrate its capabilities.</p>
           <p><strong>9.4 Non-Solicitation:</strong> During the term of this engagement and for 24 months thereafter, the Client agrees not to directly hire, recruit, or solicit any employee or contractor of the Agency.</p>
           <p><strong>9.5 Entire Agreement:</strong> These Terms constitute the entire agreement between the parties and supersede all prior agreements or understandings.</p>
-          <p><strong>9.6 Notices:</strong> Legal notices may be delivered via email to the address on file and will be considered effective 24 hours after sending.</p>
+          <p><strong>9.6 Notices:</strong> Legal notices may be delivered via email to <a href="mailto:legal@subsecondlabs.com" className="text-green-500 hover:text-green-400">legal@subsecondlabs.com</a> and will be considered effective 24 hours after sending.</p>
         </div>
       </main>
     </div>
