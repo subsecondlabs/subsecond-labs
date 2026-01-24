@@ -1,5 +1,7 @@
 import { ArrowLeft } from "lucide-react";
 
+export const dynamic = "force-static";
+
 export default function TermsOfServicePage() {
   return (
     <div className="min-h-screen bg-[#050505] text-zinc-200">

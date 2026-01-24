@@ -1,8 +1,13 @@
 import Image from "next/image";
 import { ArrowRight, Gauge, Hammer, Rocket, Scan } from "lucide-react";
 import { FadeIn } from "./components/FadeIn";
+import PerformanceFramework from "./components/PerformanceFramework";
+import { Suspense } from "react";
+import LeadFormLoader from "./components/features/lead-magnet/LeadFormLoader";
 
-const AUDIT_URL = "https://tally.so/r/Pdz6ad";
+export const dynamic = "force-static";
+
+const AUDIT_URL = process.env.NEXT_PUBLIC_AUDIT_URL ?? "";
 
 const specRows = [
   {
@@ -143,6 +148,14 @@ export default function HomePage() {
         </FadeIn>
       </section>
 
+      <Suspense fallback={null}>
+        <PerformanceFramework />
+      </Suspense>
+
+      <div id="lead-form" className="scroll-mt-[25vh]">
+        <LeadFormLoader source="performance-framework" />
+      </div>
+
       {/* LOGOS */}
       <section className="border-y border-zinc-800/60 bg-black/40 py-10 backdrop-blur-sm">
         <FadeIn delay={0.05}>
@@ -263,6 +276,7 @@ export default function HomePage() {
                     src="/mobile-mockup.png"
                     alt="High-Ticket Mobile Experience"
                     fill
+                    sizes="(min-width: 1024px) 380px, 80vw"
                     className="object-contain"
                     priority
                   />
@@ -275,7 +289,7 @@ export default function HomePage() {
       </section>
 
       {/* TECH SPECS */}
-      <section className="space-y-12">
+      <section id="standard" className="scroll-mt-[20vh] space-y-12">
         <FadeIn>
           <div className="space-y-4">
             <h2 className="text-3xl font-semibold text-white">The Hardware Difference.</h2>
@@ -329,7 +343,7 @@ export default function HomePage() {
       </section>
 
       {/* PROCESS */}
-      <section className="space-y-12">
+      <section id="services" className="scroll-mt-[20vh] space-y-12">
         <FadeIn>
           <div className="space-y-4">
             <h2 className="text-3xl font-semibold text-white">From Audit to Launch in 7 Days.</h2>
@@ -380,7 +394,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-12">
+      <section id="audit" className="scroll-mt-[20vh] py-12">
         <div className="relative overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900/30 px-6 py-24 text-center sm:px-16">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[300px] w-[300px] rounded-full bg-green-500/20 blur-[100px]"></div>
           <div className="relative z-10 mx-auto max-w-2xl space-y-8">
