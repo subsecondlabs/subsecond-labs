@@ -1,8 +1,10 @@
 import Image from "next/image";
 import { ArrowRight, Gauge, Hammer, Rocket, Scan } from "lucide-react";
 import { FadeIn } from "./components/FadeIn";
+import LeadFormLoader from "./components/features/lead-magnet/LeadFormLoader";
+import AuditCtaButton from "./components/features/audit/AuditCtaButton";
 
-const AUDIT_URL = "https://tally.so/r/Pdz6ad";
+export const dynamic = "force-static";
 
 const specRows = [
   {
@@ -114,10 +116,10 @@ export default function HomePage() {
             </p>
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <a
-                href="#problem"
+                href="#lead-magnet"
                 className="group inline-flex items-center gap-2 rounded-md border border-zinc-700 bg-zinc-900/80 px-6 py-3 text-sm font-medium text-zinc-50 transition hover:border-green-500/50 hover:text-green-500"
               >
-                View the Standard
+                Get the Framework
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
               <div className="flex items-center gap-3 text-xs text-zinc-500">
@@ -142,6 +144,10 @@ export default function HomePage() {
           </div>
         </FadeIn>
       </section>
+
+      <div id="lead-magnet" className="scroll-mt-[25vh]">
+        <LeadFormLoader source="performance-framework" />
+      </div>
 
       {/* LOGOS */}
       <section className="border-y border-zinc-800/60 bg-black/40 py-10 backdrop-blur-sm">
@@ -263,6 +269,7 @@ export default function HomePage() {
                     src="/mobile-mockup.png"
                     alt="High-Ticket Mobile Experience"
                     fill
+                    sizes="(min-width: 1024px) 380px, 80vw"
                     className="object-contain"
                     priority
                   />
@@ -275,7 +282,7 @@ export default function HomePage() {
       </section>
 
       {/* TECH SPECS */}
-      <section className="space-y-12">
+      <section id="standard" className="scroll-mt-[20vh] space-y-12">
         <FadeIn>
           <div className="space-y-4">
             <h2 className="text-3xl font-semibold text-white">The Hardware Difference.</h2>
@@ -329,7 +336,7 @@ export default function HomePage() {
       </section>
 
       {/* PROCESS */}
-      <section className="space-y-12">
+      <section id="services" className="scroll-mt-[20vh] space-y-12">
         <FadeIn>
           <div className="space-y-4">
             <h2 className="text-3xl font-semibold text-white">From Audit to Launch in 7 Days.</h2>
@@ -380,7 +387,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-12">
+      <section id="audit" className="scroll-mt-[20vh] py-12">
         <div className="relative overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900/30 px-6 py-24 text-center sm:px-16">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[300px] w-[300px] rounded-full bg-green-500/20 blur-[100px]"></div>
           <div className="relative z-10 mx-auto max-w-2xl space-y-8">
@@ -390,15 +397,9 @@ export default function HomePage() {
             <p className="text-lg text-zinc-400">
               You are losing leads every second your current site loads. Stop the bleeding.
             </p>
-            {/* BUTTON UPDATE: text-black for visibility on neon */}
-            <a
-              href={AUDIT_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <AuditCtaButton
               className="inline-flex items-center justify-center rounded-lg bg-green-500 px-8 py-4 text-base font-bold text-black shadow-[0_0_20px_rgba(167,255,84,0.4)] transition duration-300 hover:bg-white hover:shadow-[0_0_30px_rgba(255,255,255,0.6)] hover:scale-105"
-            >
-              Get Your Free Audit
-            </a>
+            />
           </div>
         </div>
       </section>
