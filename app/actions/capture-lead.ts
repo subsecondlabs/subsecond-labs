@@ -55,6 +55,7 @@ export async function captureLead(input: unknown): Promise<CaptureLeadResult> {
   const resendKey = process.env.RESEND_API_KEY
   const resendAudienceId = process.env.RESEND_AUDIENCE_ID
   const resendFrom = process.env.RESEND_FROM_EMAIL
+  const webhookUrl = process.env.DISCORD_WEBHOOK_MAGNET
 
   if (resendKey) {
     const resend = new Resend(resendKey)
@@ -79,6 +80,18 @@ export async function captureLead(input: unknown): Promise<CaptureLeadResult> {
         })
       )
     }
+  }
+
+  if (webhookUrl) {
+    tasks.push(
+      fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          content: `📩 **NEW FRAMEWORK REQUEST**\n**Email:** ${email}\n**Source:** ${normalizedSource}`,
+        }),
+      })
+    )
   }
 
   if (tasks.length === 0) {

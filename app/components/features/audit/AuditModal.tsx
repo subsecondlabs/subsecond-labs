@@ -10,18 +10,15 @@ type AuditModalProps = {
   onSuccess: () => void
 }
 
-const revenueOptions = [
-  '$0-1M',
-  '$1M-5M',
-  '$5M-10M',
-  '$10M+',
-]
+const revenueOptions = ['<$1M', '$1M-$5M', '$5M+']
+const goalOptions = ['Fix Speed', 'Get More Leads', 'Full Rebrand']
 
 export default function AuditModal({ isOpen, onClose, onSuccess }: AuditModalProps) {
   const [isMounted, setIsMounted] = useState(false)
   const [websiteUrl, setWebsiteUrl] = useState('')
-  const [contactInfo, setContactInfo] = useState('')
+  const [contactEmail, setContactEmail] = useState('')
   const [revenueSegment, setRevenueSegment] = useState(revenueOptions[0])
+  const [primaryGoal, setPrimaryGoal] = useState(goalOptions[0])
   const [error, setError] = useState('')
   const [isPending, startTransition] = useTransition()
 
@@ -32,8 +29,9 @@ export default function AuditModal({ isOpen, onClose, onSuccess }: AuditModalPro
   useEffect(() => {
     if (!isOpen) {
       setWebsiteUrl('')
-      setContactInfo('')
+      setContactEmail('')
       setRevenueSegment(revenueOptions[0])
+      setPrimaryGoal(goalOptions[0])
       setError('')
     }
   }, [isOpen])
@@ -73,8 +71,9 @@ export default function AuditModal({ isOpen, onClose, onSuccess }: AuditModalPro
               startTransition(async () => {
                 const result = await submitAudit({
                   websiteUrl,
-                  contactInfo,
+                  contactEmail,
                   revenueSegment,
+                  primaryGoal,
                 })
 
                 if (result?.success) {
@@ -102,27 +101,55 @@ export default function AuditModal({ isOpen, onClose, onSuccess }: AuditModalPro
               Email
               <input
                 type="email"
-                value={contactInfo}
-                onChange={(event) => setContactInfo(event.target.value)}
+                value={contactEmail}
+                onChange={(event) => setContactEmail(event.target.value)}
                 placeholder="you@company.com"
                 required
                 className="rounded-lg border border-zinc-800 bg-black/60 px-4 py-3 text-sm text-white placeholder:text-zinc-500 focus:border-green-500/60 focus:outline-none"
               />
             </label>
-            <label className="flex flex-col gap-2 text-sm text-zinc-300">
-              Revenue Segment
-              <select
-                value={revenueSegment}
-                onChange={(event) => setRevenueSegment(event.target.value)}
-                className="rounded-lg border border-zinc-800 bg-black/60 px-4 py-3 text-sm text-white focus:border-green-500/60 focus:outline-none"
-              >
-                {revenueOptions.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
-            </label>
+            <fieldset className="flex flex-col gap-2 text-sm text-zinc-300">
+              <legend className="text-sm text-zinc-300">Revenue Segment</legend>
+              <div className="grid gap-2 sm:grid-cols-3">
+                {revenueOptions.map((option) => {
+                  const isActive = revenueSegment === option
+                  return (
+                    <button
+                      key={option}
+                      type="button"
+                      onClick={() => setRevenueSegment(option)}
+                      className={`rounded-lg border px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 ${isActive
+                        ? 'border-green-500 bg-green-500 text-black shadow-[0_0_16px_rgba(167,255,84,0.35)]'
+                        : 'border-zinc-800 bg-black/60 text-zinc-400 hover:border-green-500/60 hover:text-green-300'
+                        }`}
+                    >
+                      {option}
+                    </button>
+                  )
+                })}
+              </div>
+            </fieldset>
+            <fieldset className="flex flex-col gap-2 text-sm text-zinc-300">
+              <legend className="text-sm text-zinc-300">Primary Goal</legend>
+              <div className="grid gap-2 sm:grid-cols-3">
+                {goalOptions.map((option) => {
+                  const isActive = primaryGoal === option
+                  return (
+                    <button
+                      key={option}
+                      type="button"
+                      onClick={() => setPrimaryGoal(option)}
+                      className={`rounded-lg border px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] outline-none focus:outline-none focus-visible:outline-none focus-visible:ring-0 ${isActive
+                        ? 'border-green-500 bg-green-500 text-black shadow-[0_0_16px_rgba(167,255,84,0.35)]'
+                        : 'border-zinc-800 bg-black/60 text-zinc-400 hover:border-green-500/60 hover:text-green-300'
+                        }`}
+                    >
+                      {option}
+                    </button>
+                  )
+                })}
+              </div>
+            </fieldset>
 
             {error && <p className="text-xs text-red-400">{error}</p>}
 
@@ -137,16 +164,16 @@ export default function AuditModal({ isOpen, onClose, onSuccess }: AuditModalPro
               <button
                 type="submit"
                 disabled={isPending}
-                className="inline-flex items-center justify-center rounded-lg bg-green-500 px-6 py-3 text-sm font-semibold text-black shadow-[0_0_20px_rgba(167,255,84,0.4)] transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-60"
+                className="inline-flex w-full items-center justify-center rounded-lg bg-green-500 px-6 py-3 text-sm font-semibold text-black shadow-[0_0_20px_rgba(167,255,84,0.4)] transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
               >
-                {isPending ? 'Requesting...' : 'Request Audit'}
+                {isPending ? 'Requesting...' : 'Request Free Audit'}
               </button>
             </div>
           </form>
         </div>
       </div>
     )
-  }, [canRender, contactInfo, error, isPending, onClose, onSuccess, revenueSegment, websiteUrl])
+  }, [canRender, contactEmail, error, isPending, onClose, onSuccess, primaryGoal, revenueSegment, websiteUrl])
 
   if (!modal) {
     return null

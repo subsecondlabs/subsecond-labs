@@ -17,9 +17,9 @@ export const leads = pgTable(
 export const auditRequests = pgTable('audit_requests', {
   id: uuid('id').defaultRandom().primaryKey(),
   websiteUrl: text('website_url').notNull(),
-  contactInfo: text('contact_info'),
-  revenueSegment: text('revenue_segment'),
-  notes: text('notes'),
+  contactEmail: text('contact_email').notNull(),
+  revenueSegment: text('revenue_segment').notNull(),
+  primaryGoal: text('primary_goal').notNull(),
   status: text('status').default('pending').notNull(),
   createdAt: timestamp('created_at').defaultNow().notNull(),
 })

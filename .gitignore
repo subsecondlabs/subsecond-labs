@@ -43,4 +43,7 @@ next-env.d.ts
 %*
 
 tasks-md
-.cursor
+.cursor/commands
+
+# Sentry Config File
+.env.sentry-build-plugin

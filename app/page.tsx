@@ -1,13 +1,10 @@
 import Image from "next/image";
 import { ArrowRight, Gauge, Hammer, Rocket, Scan } from "lucide-react";
 import { FadeIn } from "./components/FadeIn";
-import PerformanceFramework from "./components/PerformanceFramework";
-import { Suspense } from "react";
 import LeadFormLoader from "./components/features/lead-magnet/LeadFormLoader";
+import AuditCtaButton from "./components/features/audit/AuditCtaButton";
 
 export const dynamic = "force-static";
-
-const AUDIT_URL = process.env.NEXT_PUBLIC_AUDIT_URL ?? "";
 
 const specRows = [
   {
@@ -119,10 +116,10 @@ export default function HomePage() {
             </p>
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <a
-                href="#problem"
+                href="#lead-magnet"
                 className="group inline-flex items-center gap-2 rounded-md border border-zinc-700 bg-zinc-900/80 px-6 py-3 text-sm font-medium text-zinc-50 transition hover:border-green-500/50 hover:text-green-500"
               >
-                View the Standard
+                Get the Framework
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
               <div className="flex items-center gap-3 text-xs text-zinc-500">
@@ -148,11 +145,7 @@ export default function HomePage() {
         </FadeIn>
       </section>
 
-      <Suspense fallback={null}>
-        <PerformanceFramework />
-      </Suspense>
-
-      <div id="lead-form" className="scroll-mt-[25vh]">
+      <div id="lead-magnet" className="scroll-mt-[25vh]">
         <LeadFormLoader source="performance-framework" />
       </div>
 
@@ -404,15 +397,9 @@ export default function HomePage() {
             <p className="text-lg text-zinc-400">
               You are losing leads every second your current site loads. Stop the bleeding.
             </p>
-            {/* BUTTON UPDATE: text-black for visibility on neon */}
-            <a
-              href={AUDIT_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <AuditCtaButton
               className="inline-flex items-center justify-center rounded-lg bg-green-500 px-8 py-4 text-base font-bold text-black shadow-[0_0_20px_rgba(167,255,84,0.4)] transition duration-300 hover:bg-white hover:shadow-[0_0_30px_rgba(255,255,255,0.6)] hover:scale-105"
-            >
-              Get Your Free Audit
-            </a>
+            />
           </div>
         </div>
       </section>

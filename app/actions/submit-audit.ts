@@ -8,10 +8,14 @@ type SubmitAuditResult = {
   success: boolean
 }
 
+const revenueOptions = ['<$1M', '$1M-$5M', '$5M+'] as const
+const goalOptions = ['Fix Speed', 'Get More Leads', 'Full Rebrand'] as const
+
 const auditSchema = z.object({
   websiteUrl: z.string().trim().url(),
-  contactInfo: z.string().trim().min(1).max(120),
-  revenueSegment: z.string().trim().min(1).max(40),
+  contactEmail: z.string().trim().email().max(120),
+  revenueSegment: z.enum(revenueOptions),
+  primaryGoal: z.enum(goalOptions),
 })
 
 export async function submitAudit(input: unknown): Promise<SubmitAuditResult> {
@@ -20,7 +24,7 @@ export async function submitAudit(input: unknown): Promise<SubmitAuditResult> {
     return { success: false }
   }
 
-  const { websiteUrl, contactInfo, revenueSegment } = parsed.data
+  const { websiteUrl, contactEmail, revenueSegment, primaryGoal } = parsed.data
   const dbContext = createDb()
   if (dbContext) {
     const { db, client } = dbContext
@@ -29,8 +33,9 @@ export async function submitAudit(input: unknown): Promise<SubmitAuditResult> {
         .insert(auditRequests)
         .values({
           websiteUrl,
-          contactInfo,
+          contactEmail,
           revenueSegment,
+          primaryGoal,
           status: 'pending',
         })
         .finally(() => client.end({ timeout: 2 }))
@@ -42,7 +47,7 @@ export async function submitAudit(input: unknown): Promise<SubmitAuditResult> {
   const webhookUrl = process.env.DISCORD_WEBHOOK_URL
   if (webhookUrl) {
     const payload = {
-      content: `🚨 **NEW HIGH-VALUE LEAD** 🚨\n**URL:** [${websiteUrl}](${websiteUrl})\n**Contact:** ${contactInfo}\n**Rev:** ${revenueSegment}`,
+      content: `🚨 **NEW AUDIT REQUEST** 🚨\n**URL:** ${websiteUrl}\n**Revenue:** ${revenueSegment}\n**Goal:** ${primaryGoal}\n**Contact:** ${contactEmail}`,
     }
     try {
       await fetch(webhookUrl, {

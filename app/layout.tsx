@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import "./globals.css";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 // --- POSTHOG INTEGRATION ---
 import PostHogPageViewLoader from "./components/core/analytics/PostHogPageViewLoader";
@@ -57,6 +58,8 @@ export default function RootLayout({
             {children}
             <Footer />
           </div>
+
+          <SpeedInsights />
         </PostHogProvider>
       </body>
     </html>
