@@ -6,6 +6,10 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function Image() {
+  const logoData = await fetch(
+    new URL("../public/logo.svg", import.meta.url)
+  ).then((res) => res.arrayBuffer());
+
   return new ImageResponse(
     (
       <div
@@ -28,20 +32,15 @@ export default async function Image() {
             gap: "20px",
           }}
         >
-          <div
+          <img
+            src={logoData as unknown as string}
+            alt="SubSecond Labs logo"
             style={{
               width: 80,
               height: 80,
               borderRadius: 20,
-              background: "#A7FF54",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 50,
             }}
-          >
-            ⚡
-          </div>
+          />
           <div
             style={{
               display: "flex",
