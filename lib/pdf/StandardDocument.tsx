@@ -169,10 +169,11 @@ export default function StandardDocument() {
                 {section.metrics.map((metric, metricIndex) => (
                   <View
                     key={metric.name}
-                    style={[
-                      styles.metricCard,
-                      metricIndex % 2 === 1 ? styles.metricCardRight : null,
-                    ]}
+                    style={
+                      metricIndex % 2 === 1
+                        ? [styles.metricCard, styles.metricCardRight]
+                        : styles.metricCard
+                    }
                   >
                     <Text style={styles.metricName}>{metric.name}</Text>
                     <Text style={styles.metricLabel}>Definition</Text>
